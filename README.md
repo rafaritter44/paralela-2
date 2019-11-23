@@ -1,1 +1,0 @@
-# paralela-2
