@@ -1,0 +1,31 @@
+#PBS -m abe
+#PBS -V
+#PBS -l nodes=2:ppn=16:cluster-Grad,walltime=01:00:00
+#PBS -M rafael.ritter@edu.pucrs.br
+#PBS -r n
+#PBS -j oe
+#PBS -d /home/pp12707/t2
+
+################
+echo Running on host `hostname`
+echo
+echo Initial Time is `date`
+echo
+echo Directory is `pwd`
+echo
+echo This jobs runs on the following nodes:
+echo `cat $PBS_NODEFILE | uniq`
+echo
+echo JOB_ID:
+echo `echo $PBS_JOBID`
+echo ################
+
+################
+
+echo -n `mpirun -np 16 ./parallel > parallel-2n-16p.txt`
+echo -n `mpirun -np 32 ./parallel > parallel-2n-32p.txt`
+
+
+################
+
+echo Final Time is `date`
